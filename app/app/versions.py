@@ -1,5 +1,5 @@
 # app/versions.py
-BRAIN_VERSION = "2026.03"
+BRAIN_VERSION = "2026.03.05"
 AGENT_VERSION = "0.2.2" # the agent script release (NOT schema)
 
 # mismatch escalation policy (minutes)
