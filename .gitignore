@@ -1,11 +1,36 @@
+# Python
 __pycache__/
 *.pyc
 *.pyo
-*.bak.*
-*.pre_css_fix.*
-*~
+*.pyd
+*.egg-info/
+.dist-info/
+.venv/
+venv/
+.env/
+.env.*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Logs / runtime
+*.log
+
+# Local data (never commit)
+*.db
+data/
 backups/
-_private_backups/
-*.tgz
+tmp/
+.cache/
+
+# Archives
 *.tar.gz
-.env
+*.zip
+
+# Secrets (belt & braces)
+secrets.yml
+*.key
+*.pem
