@@ -14,5 +14,4 @@ services:
     restart: unless-stopped
     ports:
       - "8787:8787"
-volumes:
-  /volume1/docker/harry-brain:
+
