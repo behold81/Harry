@@ -26,6 +26,7 @@ git clone https://github.com/samuelwhite/Harry.git
 cd Harry
 ./install.sh
 ```
+The installing host automatically registers itself as a node.
 
 Open:
 
