@@ -1793,7 +1793,7 @@ def index(request: Request) -> HTMLResponse:
         nodeviews.sort(key=sort_key)
 
         generated = _utcnow().isoformat().replace("+00:00", "Z")
-        brain_name = (os.environ.get("HARRY_BRAIN_NODE") or "alfred").strip()
+        brain_name = (os.environ.get("HARRY_BRAIN_NODE") or "brain").strip()
 
         # Counts for top nav
         stale_n = sum(1 for n in nodeviews if n.stale)

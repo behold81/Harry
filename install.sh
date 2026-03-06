@@ -94,10 +94,18 @@ if [[ -d "$SCRIPT_DIR/scripts" ]]; then
   cp -a "$SCRIPT_DIR/scripts" "$INSTALL_DIR/"
 fi
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Determine hostname for the brain node
+BRAIN_NODE_NAME="$(hostname -s 2>/dev/null || hostname 2>/dev/null || echo brain)"
+
+echo "==> Brain node name: ${BRAIN_NODE_NAME}"
+
 # Write env file (compose can read it; app also reads env vars)
 cat > "$INSTALL_DIR/.env" <<ENV
 HARRY_DB_PATH=/data/harry.db
 HARRY_DATA_DIR=/data
+HARRY_BRAIN_NODE=${BRAIN_NODE_NAME}
 ENV
 
 # Write an install-specific compose override with port binding
