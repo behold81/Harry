@@ -174,14 +174,19 @@ if [[ "${INSTALL_LOCAL_AGENT:-1}" == "1" ]]; then
 
 fi
 
+echo "==> Local node registered with Harry"
+
 # -------------------------------------------------------------------
 # Final success output
 # -------------------------------------------------------------------
 
 HOST_IP="$(hostname -I 2>/dev/null | awk '{print $1}')"
 
-if [[ -z "${HOST_IP:-}" ]]; then
-  HOST_IP="localhost"
+if [ "$LISTEN" = "127.0.0.1" ]; then
+  HOST_IP="127.0.0.1"
+else
+  HOST_IP="$(hostname -I 2>/dev/null | awk '{print $1}')"
+  HOST_IP="${HOST_IP:-$(hostname 2>/dev/null || echo localhost)}"
 fi
 
 echo

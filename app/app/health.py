@@ -21,11 +21,11 @@ def compute_health(payload: Dict[str, Any], ctx: Optional[Dict[str, Any]] = None
         age_minutes = (now - ts).total_seconds() / 60
 
         if age_minutes > 30:
-            reasons.append("Node stale >30m")
+            reasons.append(f"Node stale ({int(age_minutes)}m since last report)")
             worst = "critical"
             score -= 40
         elif age_minutes > 15:
-            reasons.append("Node stale >15m")
+            reasons.append(f"Node delayed ({int(age_minutes)}m since last report)")
             worst = max(worst, "warning", key=_severity_rank)
             score -= 20
     except Exception:
@@ -140,4 +140,5 @@ def compute_health(payload: Dict[str, Any], ctx: Optional[Dict[str, Any]] = None
         "state": worst,
         "score": score,
         "reasons": reasons,
-    }
+	"age_minutes": age_minutes,
+   }
